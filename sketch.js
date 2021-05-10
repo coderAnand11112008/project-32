@@ -4,6 +4,8 @@ const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
 var engine, world;
+var box1, box2, box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,box17,box18,box19,box20, ground;
+var ball, rope
 
 function setup() {
   createCanvas(3000, 800);
@@ -11,10 +13,33 @@ function setup() {
   world = engine.world;
 
   ground = new Ground(600, 600, 1200, 20);
+
+  box2 = new Box(500, 400 , 250, 30)
+  box3 = new Box(500, 300, 150, 100);
+  
+
+  ball = new Ball(100, 200, 80, 80);
+  rope = new Rope(ball.body, { x: 400, y: 270 });
+
 }
 
-function draw(){
-   background(180);
+function draw() {
+  background(0);
   Engine.update(engine);
-    ground.display();
+  ground.display();
+  box2.display();
+  box3.display();
+  
+  ball.display();
+  rope.display();
+
+
+
 }
+
+
+function mouseDragged() {
+  Matter.Body.setPosition(ball.body, { x: mouseX, y: mouseY });
+}
+
+
